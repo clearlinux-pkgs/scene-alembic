@@ -1,0 +1,5 @@
+sed -i -e 's/ConfigPackageLocation lib/ConfigPackageLocation %{_lib}/g' \
+    lib/Alembic/CMakeLists.txt
+
+iconv -f iso8859-1 -t utf-8 ACKNOWLEDGEMENTS.txt > ACKNOWLEDGEMENTS.txt.conv && \
+    mv -f ACKNOWLEDGEMENTS.txt.conv ACKNOWLEDGEMENTS.txt
