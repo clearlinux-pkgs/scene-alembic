@@ -4,7 +4,7 @@
 #
 Name     : scene-alembic
 Version  : 1.7.10
-Release  : 1
+Release  : 2
 URL      : https://github.com/alembic/alembic/archive/1.7.10.tar.gz
 Source0  : https://github.com/alembic/alembic/archive/1.7.10.tar.gz
 Summary  : No detailed summary available
@@ -76,7 +76,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1544214341
+export SOURCE_DATE_EPOCH=1545251328
 mkdir -p clr-build
 pushd clr-build
 %cmake .. -DALEMBIC_LIB_INSTALL_DIR=%{_libdir} \
@@ -92,7 +92,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1544214341
+export SOURCE_DATE_EPOCH=1545251328
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/scene-alembic
 cp LICENSE.txt %{buildroot}/usr/share/package-licenses/scene-alembic/LICENSE.txt
