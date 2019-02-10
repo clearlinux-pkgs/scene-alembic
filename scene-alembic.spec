@@ -4,7 +4,7 @@
 #
 Name     : scene-alembic
 Version  : 1.7.10
-Release  : 2
+Release  : 3
 URL      : https://github.com/alembic/alembic/archive/1.7.10.tar.gz
 Source0  : https://github.com/alembic/alembic/archive/1.7.10.tar.gz
 Summary  : No detailed summary available
