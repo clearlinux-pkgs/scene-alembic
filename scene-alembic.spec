@@ -4,7 +4,7 @@
 #
 Name     : scene-alembic
 Version  : 1.7.10
-Release  : 4
+Release  : 5
 URL      : https://github.com/alembic/alembic/archive/1.7.10.tar.gz
 Source0  : https://github.com/alembic/alembic/archive/1.7.10.tar.gz
 Summary  : No detailed summary available
@@ -40,6 +40,7 @@ Group: Development
 Requires: scene-alembic-lib = %{version}-%{release}
 Requires: scene-alembic-bin = %{version}-%{release}
 Provides: scene-alembic-devel = %{version}-%{release}
+Requires: scene-alembic = %{version}-%{release}
 
 %description dev
 dev components for the scene-alembic package.
@@ -64,21 +65,28 @@ license components for the scene-alembic package.
 
 %prep
 %setup -q -n alembic-1.7.10
+cd %{_builddir}/alembic-1.7.10
 
 %build
 ## build_prepend content
 sed -i -e 's/ConfigPackageLocation lib/ConfigPackageLocation %{_lib}/g' \
 lib/Alembic/CMakeLists.txt
+
 iconv -f iso8859-1 -t utf-8 ACKNOWLEDGEMENTS.txt > ACKNOWLEDGEMENTS.txt.conv && \
 mv -f ACKNOWLEDGEMENTS.txt.conv ACKNOWLEDGEMENTS.txt
 ## build_prepend end
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1545251328
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1592657019
 mkdir -p clr-build
 pushd clr-build
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 %cmake .. -DALEMBIC_LIB_INSTALL_DIR=%{_libdir} \
 -DALEMBIC_SHARED_LIBS=ON \
 -DUSE_BINARIES=ON \
@@ -88,14 +96,14 @@ pushd clr-build
 -DUSE_STATIC_BOOST=OFF \
 -DUSE_STATIC_HDF5=OFF \
 -DUSE_TESTS=ON
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1545251328
+export SOURCE_DATE_EPOCH=1592657019
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/scene-alembic
-cp LICENSE.txt %{buildroot}/usr/share/package-licenses/scene-alembic/LICENSE.txt
+cp %{_builddir}/alembic-1.7.10/LICENSE.txt %{buildroot}/usr/share/package-licenses/scene-alembic/0f6c501809ccc8140dcbc67f993fc36b058e807e
 pushd clr-build
 %make_install
 popd
@@ -251,4 +259,4 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/scene-alembic/LICENSE.txt
+/usr/share/package-licenses/scene-alembic/0f6c501809ccc8140dcbc67f993fc36b058e807e
