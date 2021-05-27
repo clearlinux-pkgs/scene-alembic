@@ -1,5 +1,6 @@
 # This file contains additional build requirements that did not get
 # picked up automatically. One name per line, no whitespace.
+Imath-dev
 hdf5-dev
 openexr-dev
 zlib-dev
