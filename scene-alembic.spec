@@ -4,7 +4,7 @@
 #
 Name     : scene-alembic
 Version  : 1.8.3
-Release  : 11
+Release  : 12
 URL      : https://github.com/alembic/alembic/archive/1.8.3/alembic-1.8.3.tar.gz
 Source0  : https://github.com/alembic/alembic/archive/1.8.3/alembic-1.8.3.tar.gz
 Summary  : No detailed summary available
@@ -84,7 +84,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1642451550
+export SOURCE_DATE_EPOCH=1642452103
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -105,7 +105,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1642451550
+export SOURCE_DATE_EPOCH=1642452103
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/scene-alembic
 cp %{_builddir}/alembic-1.8.3/LICENSE.txt %{buildroot}/usr/share/package-licenses/scene-alembic/0cfaafe307c2d681b44f591aee85efa1bd8c636a
