@@ -5,7 +5,7 @@
 #
 Name     : scene-alembic
 Version  : 1.8.6
-Release  : 15
+Release  : 16
 URL      : https://github.com/alembic/alembic/archive/1.8.6/alembic-1.8.6.tar.gz
 Source0  : https://github.com/alembic/alembic/archive/1.8.6/alembic-1.8.6.tar.gz
 Summary  : No detailed summary available
